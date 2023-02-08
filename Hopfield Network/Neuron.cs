@@ -8,11 +8,12 @@ namespace Hopfield_Network
 {
     internal class Neuron
     {
-        int[] weightv = new int[4];
+        public int[] weightv = new int[9];
+        public int activation;
 
         public Neuron(int[] j)
         {
-            for(int i = 0; i < 4; i++)
+            for(int i = 0; i < 9; i++)
             {
                 weightv[i] = j[i];
             }
