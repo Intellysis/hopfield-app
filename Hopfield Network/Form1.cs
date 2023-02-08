@@ -33,12 +33,12 @@ namespace Hopfield_Network
             w8 = new int[] { 0, 2, 0, 0, 0, 0, 0, 0, 0 };
             w9 = new int[] { 2, 0, 2, -2, -2, -2, 2, 0, 0 };
             h1 = new Network(w1, w2, w3, w4, w5, w6, w7, w8, w9);
-            setPictureBox();
+            ResetPictureBox();
         }
 
-        public void setPictureBox()
+        public void ResetPictureBox()
         {
-            pictureBox1.BackColor = Color.White; 
+            pictureBox1.BackColor = Color.White;
             pictureBox2.BackColor = Color.White;
             pictureBox3.BackColor = Color.White;
             pictureBox4.BackColor = Color.White;
@@ -50,9 +50,16 @@ namespace Hopfield_Network
 
         }
 
+        public void ResetButton(Button btn)
+        {
+            btn.BackColor = SystemColors.ButtonFace;
+            btn.ForeColor = default(Color);
+            btn.UseVisualStyleBackColor = true;
+        }
+
         private void button26_Click(object sender, EventArgs e)
         {
-            setPictureBox();
+            ResetPictureBox();
             h1.Activation(pattern);
             var pictureBox = new List<PictureBox>() 
             { 
@@ -90,7 +97,7 @@ namespace Hopfield_Network
             }
             else
             {
-                button1.BackColor = Color.White;
+                ResetButton(button1);
                 pattern[0] = -1;
             }
         }
@@ -104,7 +111,7 @@ namespace Hopfield_Network
             }
             else
             {
-                button10.BackColor = Color.White;
+                ResetButton(button10);
                 pattern[1] = -1;
             }
         }
@@ -117,7 +124,7 @@ namespace Hopfield_Network
             }
             else
             {
-                button11.BackColor = Color.White;
+                ResetButton(button11);
                 pattern[2] = -1;
             }
         }
@@ -131,7 +138,7 @@ namespace Hopfield_Network
             }
             else
             {
-                button18.BackColor = Color.White;
+                ResetButton(button18);
                 pattern[3] = -1;
             }
         }
@@ -145,7 +152,7 @@ namespace Hopfield_Network
             }
             else
             {
-                button13.BackColor = Color.White;
+                ResetButton(button13);
                 pattern[4] = -1;
             }
         }
@@ -159,7 +166,7 @@ namespace Hopfield_Network
             }
             else
             {
-                button12.BackColor = Color.White;
+                ResetButton(button12);
                 pattern[5] = -1;
             }
         }
@@ -173,7 +180,7 @@ namespace Hopfield_Network
             }
             else
             {
-                button25.BackColor = Color.White;
+                ResetButton(button25);
                 pattern[6] = -1;
             }
         }
@@ -187,7 +194,7 @@ namespace Hopfield_Network
             }
             else
             {
-                button20.BackColor = Color.White;
+                ResetButton(button20);
                 pattern[7] = -1;
             }
         }
@@ -201,7 +208,7 @@ namespace Hopfield_Network
             }
             else
             {
-                button19.BackColor = Color.White;
+                ResetButton(button19);
                 pattern[8] = -1;
             }
         }
