@@ -358,11 +358,11 @@
             // button26
             // 
             this.button26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button26.Location = new System.Drawing.Point(421, 410);
+            this.button26.Location = new System.Drawing.Point(402, 409);
             this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(137, 56);
+            this.button26.Size = new System.Drawing.Size(185, 56);
             this.button26.TabIndex = 34;
-            this.button26.Text = "Button";
+            this.button26.Text = "Generate Output";
             this.button26.UseVisualStyleBackColor = true;
             this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
