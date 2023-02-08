@@ -1,4 +1,4 @@
-﻿namespace Hopfield_Networkl
+﻿namespace Hopfield_Network
 {
     partial class Form1
     {

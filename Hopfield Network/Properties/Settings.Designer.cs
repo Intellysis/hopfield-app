@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hopfield_Networkl.Properties
+namespace Hopfield_Network.Properties
 {
 
 

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Hopfield_Networkl
+namespace Hopfield_Network
 {
     internal class Network
     {

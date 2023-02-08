@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Hopfield_Networkl
+namespace Hopfield_Network
 {
     internal static class Program
     {

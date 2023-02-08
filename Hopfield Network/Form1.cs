@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Hopfield_Networkl
+namespace Hopfield_Network
 {
     public partial class Form1 : Form
     {
