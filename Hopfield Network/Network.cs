@@ -32,6 +32,7 @@ namespace Hopfield_Network
 
         public void Activation(int[] pattern)
         {
+            output = pattern;
             int[] previous = new int[9];
             int[] current = new int[9] {-1,-1,-1,-1,-1,-1,-1,-1,-1};
             while(true)
@@ -39,7 +40,7 @@ namespace Hopfield_Network
                 if (previous.Equals(current))
                     break;
                 previous = current;
-                AsyncUpdate(pattern);
+                AsyncUpdate(output);
                 current = output;
             }
         }
