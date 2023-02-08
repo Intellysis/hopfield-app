@@ -1,13 +1,15 @@
 ﻿using System.IO;
 using System;
 using System.Runtime.InteropServices;
+using System.Linq;
+using System.Diagnostics;
 
 namespace Hopfield_Network
 {
     internal class Network
     {
-        Neuron[] neuron = new Neuron[4];
-        int[] output = new int[4];
+        public Neuron[] neuron = new Neuron[9];
+        public int[] output = new int[9];
 
         public Network(int[] w1, int[] w2, int[] w3, int[] w4, int[] w5, int[] w6, int[] w7, int[] w8, int[] w9)
         {
@@ -25,22 +27,30 @@ namespace Hopfield_Network
 
         public int Threshold(int threshold)
         {
-            return (threshold >= 0) ? 1 : 0;
+            return (threshold >= 0) ? 1 : -1;
         }
 
         public void Activation(int[] pattern)
         {
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    Console.WriteLine("neuron[" + i + "].weightv[" + j + "] is " + neuron[i].weightv[j]);
-                }
-                neuron[i].activation = neuron[i].Act(4, pattern);
-                Console.WriteLine("activation is " + neuron[i].activation);
-                output[i] = Threshold(neuron[i].activation);
-                Console.WriteLine("output value is " + output[i] + "\n");
+            int[] previous = new int[9];
+            int[] current = new int[9] {-1,-1,-1,-1,-1,-1,-1,-1,-1};
+            while(true)
+            { 
+                if (previous.Equals(current))
+                    break;
+                previous = current;
+                AsyncUpdate(pattern);
+                current = output;
             }
         }
-    } 
+
+        public void AsyncUpdate(int[] pattern)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                neuron[i].activation = neuron[i].Act(9, pattern);
+                output[i] = Threshold(neuron[i].activation);
+            }
+        }
+    }
 }
