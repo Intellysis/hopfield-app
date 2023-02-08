@@ -13,7 +13,6 @@ namespace Hopfield_Network
 {
     public partial class Form1 : Form
     {
-        Button btn;
         int[] pattern;
         int[] w1, w2, w3, w4, w5, w6, w7, w8, w9;
 
