@@ -3,6 +3,8 @@ using System;
 using System.Runtime.InteropServices;
 using System.Linq;
 using System.Diagnostics;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace Hopfield_Network
 {
@@ -35,13 +37,28 @@ namespace Hopfield_Network
             output = pattern;
             int[] previous = new int[9];
             int[] current = new int[9] {-1,-1,-1,-1,-1,-1,-1,-1,-1};
-            while(true)
-            { 
-                if (previous.Equals(current))
-                    break;
+            //int[] current = new int[9];
+            //var previouses = new List<int[]>() { current };
+            //var currents = new List<int[]>();
+            int i = 0, k = 0;
+            while (!(k == 9 && i == 9))
+            {
+                if (k == 9 && i != 9)
+                {
+                    k = 0;
+                    i = 0;
+                }
+
+                if (previous.SequenceEqual(current))
+                    i += 1;
+
                 previous = current;
+               // previouses.Add(previous);
                 AsyncUpdate(output);
                 current = output;
+                //currents.Add(current)
+
+                k++;    
             }
         }
 
