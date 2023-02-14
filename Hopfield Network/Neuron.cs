@@ -11,11 +11,11 @@ namespace Hopfield_Network
         public int[] weightv = new int[9];
         public int activation;
 
-        public Neuron(int[] j)
+        public Neuron(int[] neuron)
         {
             for(int i = 0; i < 9; i++)
             {
-                weightv[i] = j[i];
+                weightv[i] = neuron[i];
             }
         }
 
