@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hopfield_Network
@@ -49,17 +44,25 @@ namespace Hopfield_Network
 
         }
 
-        public void ResetButton(Button btn)
+        public void ResetButton()
         {
-            btn.BackColor = SystemColors.ButtonFace;
-            btn.ForeColor = default(Color);
-            btn.UseVisualStyleBackColor = true;
+            var buttons = new List<Button> { button1, button10, button11, button18, button13, button12, button25, button20, button19 };
+
+            for (int i = 0; i < 9; i++)
+            {
+                buttons[i].BackColor = SystemColors.ButtonFace;
+                buttons[i].ForeColor = default;
+                buttons[i].UseVisualStyleBackColor = true;
+
+                pattern[i] = -1;
+            }
         }
 
         private void button26_Click(object sender, EventArgs e)
         {
             ResetPictureBox();
             h1.Activation(pattern);
+
             var pictureBox = new List<PictureBox>() 
             { 
                 pictureBox1, 
@@ -78,14 +81,15 @@ namespace Hopfield_Network
                 if (h1.output[i] == pattern[i])
                 {
                     if (h1.output[i] == 1)
-                      pictureBox[i].BackColor = Color.Black;
+                        pictureBox[i].BackColor = Color.Black;
                 }
                 else
                 {
                     Debug.WriteLine("pattern= " + pattern[i] + " output = " + h1.output[i] + " discrepancy occured");
                 }
-            }    
-            
+            }
+
+            ResetButton();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -94,37 +98,23 @@ namespace Hopfield_Network
                 button1.BackColor = Color.Black;
                 pattern[0] = 1;
             }
-            else
-            {
-                ResetButton(button1);
-                pattern[0] = -1;
-            }
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             if (pattern[1] == -1)
             {
                 button10.BackColor = Color.Black;
                 pattern[1] = 1;
             }
-            else
-            {
-                ResetButton(button10);
-                pattern[1] = -1;
-            }
         }
-        private void button11_Click(object sender, EventArgs e)
+
+        private void button3_Click(object sender, EventArgs e)
         {
             if (pattern[2] == -1)
             {
                 button11.BackColor = Color.Black;
                 pattern[2] = 1;
-            }
-            else
-            {
-                ResetButton(button11);
-                pattern[2] = -1;
             }
         }
 
@@ -135,11 +125,6 @@ namespace Hopfield_Network
                 button18.BackColor = Color.Black;
                 pattern[3] = 1;
             }
-            else
-            {
-                ResetButton(button18);
-                pattern[3] = -1;
-            }
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -148,11 +133,6 @@ namespace Hopfield_Network
             {
                 button13.BackColor = Color.Black;
                 pattern[4] = 1;
-            }
-            else
-            {
-                ResetButton(button13);
-                pattern[4] = -1;
             }
         }
 
@@ -163,11 +143,6 @@ namespace Hopfield_Network
                 button12.BackColor = Color.Black;
                 pattern[5] = 1;
             }
-            else
-            {
-                ResetButton(button12);
-                pattern[5] = -1;
-            }
         }
 
         private void button25_Click(object sender, EventArgs e)
@@ -176,11 +151,6 @@ namespace Hopfield_Network
             {
                 button25.BackColor = Color.Black;
                 pattern[6] = 1;
-            }
-            else
-            {
-                ResetButton(button25);
-                pattern[6] = -1;
             }
         }
 
@@ -191,11 +161,6 @@ namespace Hopfield_Network
                 button20.BackColor = Color.Black;
                 pattern[7] = 1;
             }
-            else
-            {
-                ResetButton(button20);
-                pattern[7] = -1;
-            }
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -204,11 +169,6 @@ namespace Hopfield_Network
             {
                 button19.BackColor = Color.Black;
                 pattern[8] = 1;
-            }
-            else
-            {
-                ResetButton(button19);
-                pattern[8] = -1;
             }
         }
     }

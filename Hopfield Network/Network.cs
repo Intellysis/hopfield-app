@@ -1,8 +1,5 @@
-﻿using System.IO;
-using System;
-using System.Runtime.InteropServices;
-using System.Linq;
-using System.Diagnostics;
+﻿using System.Linq;
+using System.Collections.Generic;
 
 namespace Hopfield_Network
 {
@@ -32,26 +29,44 @@ namespace Hopfield_Network
 
         public void Activation(int[] pattern)
         {
+            bool isStable = false;
             output = pattern;
-            int[] previous = new int[9];
-            int[] current = new int[9] {-1,-1,-1,-1,-1,-1,-1,-1,-1};
-            while(true)
-            { 
-                if (previous.Equals(current))
-                    break;
-                previous = current;
-                AsyncUpdate(output);
-                current = output;
+
+            while (!isStable)
+            {
+                List<int[]> patternList = new List<int[]>();
+
+                for (int i = 0; i < 9; i++)
+                {
+                    neuron[i].activation = neuron[i].Act(9, output);
+                    output[i] = Threshold(neuron[i].activation);
+
+                    patternList.Add((int[])output.Clone());
+                }
+
+                isStable = StabilityChecker(patternList);
             }
         }
 
-        public void AsyncUpdate(int[] pattern)
+        /// <summary>
+        /// Checks if the generated list of outputs in each weight rows are all equal 
+        /// wherein this shows stability
+        /// </summary>
+        /// <param name="patternList">List that stores all generated output in each weight row</param>
+        /// <returns>True if stable, otherwise false</returns>
+        public bool StabilityChecker(List<int[]> patternList)
         {
-            for (int i = 0; i < 9; i++)
+            bool isStable = true;
+            for (int i = 1; i < patternList.Count; i++)
             {
-                neuron[i].activation = neuron[i].Act(9, pattern);
-                output[i] = Threshold(neuron[i].activation);
+                if (!patternList[i].SequenceEqual(patternList[0]))
+                {
+                    isStable = false;
+                    break;
+                }
             }
+
+            return isStable;
         }
     }
 }
